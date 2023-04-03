@@ -43,4 +43,8 @@ The `Array2d` class is a 2d array implementation. It contains a 2d array of opti
 # Adding the Bridging Header to your Project
 To add the Bridging Header under your Build go to Project -> Targets -> Build Settings and search "bridging header". 
   The result should come up under 'Swift Compiler - General' under 'Objective-C Bridging Header'
-  Put the path to the bridging header here
+  Put the path to the bridging header here. If you do not know the path, go to the Bridging Header file, open the Inspector sidebar.
+  Look for the 'Location' dropdown and select 'Relative to Project'. Then copy the path underneath and paste that into the Build Settings.
+
+# Remove Warnings
+There are several warnings in the original C files that are picked up by the Xcode analyser. I did not change the C code at all. To get rid of these warnings go to Project -> Targets -> Build Phases -> Compile Sources. Look for wfctool.c and wfc.h and make sure both are listed there. Usually wfc.h will not. To add it just click the + to add a compile source and add the wfc.h. Then on both of the files, under the build flags, double click to open the flag textbox and enter '-w' which will remove warnings. You HAVE to do it for both files, or else warnings will still appear.
